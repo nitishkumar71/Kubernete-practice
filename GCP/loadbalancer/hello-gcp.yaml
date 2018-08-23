@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: my-app
+  labels:
+    run: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: my-app
+  template:
+    metadata:
+      labels:
+        run: my-app
+    spec:
+      containers:
+      - image: gcr.io/google-samples/hello-app:1.0
+        name: my-app
+        ports:
+        - containerPort: 8080
